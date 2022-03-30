@@ -1,14 +1,18 @@
-function add(num1, num2, showResult, phrase) {
-    var result = num1 + num2;
-    if (showResult) {
-        console.log(phrase + result);
-    }
-    else {
-        return result;
-    }
+//object
+// const person: {
+//   name: string;
+//   age: number;
+// } = {
+var person = {
+    name: "John",
+    age: 30,
+    hobbies: ["sports", "cooking"]
+};
+var favoriteActivities;
+// let favoriteActivities: any[]; losing the ts benefits, ut allows us to use all types of data inside the array.
+favoriteActivities = ["sports"];
+console.log(person.name);
+for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
+    var hobby = _a[_i];
+    console.log(hobby.toUpperCase());
 }
-var number1 = 5;
-var number2 = 2.8;
-var printResult = true;
-var resultPhrase = "Result is ";
-add(number1, number2, printResult, resultPhrase);
