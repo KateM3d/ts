@@ -1,38 +1,41 @@
-//object
-// const person: {
-//   name: string;
-//   age: number;
-//   hobbies: string[];
-//   role: [number, string];
-// } = {
-//   // const person = {
-//   name: "John",
-//   age: 30,
-//   hobbies: ["sports", "cooking"],
-//   role: [2, "author"],
-// };
-var Role;
-(function (Role) {
-    Role[Role["ADMIN"] = 0] = "ADMIN";
-    Role[Role["READ_ONLY"] = 1] = "READ_ONLY";
-    Role[Role["AUTHOR"] = 2] = "AUTHOR";
-})(Role || (Role = {}));
-var person = {
-    name: "John",
-    age: 30,
-    hobbies: ["sports", "cooking"],
-    role: Role.ADMIN
-};
-person.role.push("admin");
-// person.role[0] = 10;
-var favoriteActivities;
-// let favoriteActivities: any[]; losing the ts benefits, ut allows us to use all types of data inside the array.
-favoriteActivities = ["sports"];
-console.log(person);
-for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
-    var hobby = _a[_i];
-    console.log(hobby.toUpperCase());
+//union type
+/*
+function combine(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
 }
-if (person.role === Role.ADMIN) {
-    console.log("is read only");
+
+const combinedAges = combine(30, 26);
+console.log(combinedAges);
+
+const combineNames = combine("Max", "Anna");
+console.log(combineNames);
+*/
+//Literal types
+function combine(input1, input2, resultType) {
+    var result;
+    if ((typeof input1 === "number" && typeof input2 === "number") ||
+        resultType === "as number") {
+        result = +input1 + +input2;
+    }
+    else {
+        result = input1.toString() + input2.toString();
+    }
+    //   if (resultType === "as number") {
+    //     return +result;
+    //   } else {
+    //     result.toString();
+    //   }
+    return result;
 }
+var combinedAges = combine(30, 26, "as number");
+console.log(combinedAges);
+var combinedStringAges = combine("30", "26", "as number");
+console.log(combinedStringAges);
+var combineNames = combine("Max", "Anna", "as text");
+console.log(combineNames);
